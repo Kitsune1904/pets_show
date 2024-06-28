@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pets Show</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1>Добро пожаловать!</h1>
+      <p>
+        Для того что-бы начать пользоваться нашим приложением - выберите среди
+        каких животных будет проводиться выставка.
+      </p>
+      <div class="card-holder">
+        <div class="card">
+          <img
+            src="./img/adorable-looking-kitten-with-sunglasses.jpg"
+            alt="adorable looking cat with sunglasses"
+          />
+          <button id="cat-btn">Выставка кошек</button>
+        </div>
+        <div class="card">
+          <img
+            src="./img/adorable-looking-dog-with-sunglasses.jpg"
+            alt="adorable looking dog with sunglasses"
+          />
+          <button id="cat-btn">Выставка собак</button>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <h2>Заполните форму</h2>
+      <form>
+        <div class="question">
+          <p>
+            Выбирите удобный Вам формат пользования таблицей.
+            <span>Автоматическая</span> генерация таблицы, когда Вы сразу знаете
+            кол-во участников. Генерация таблицы <span>вручную</span>, с
+            постепенным добавлением участников.
+          </p>
+          <div>
+            <input
+              type="radio"
+              id="automatic"
+              value="Автоматическая"
+              name="generationType"
+              required
+            />
+            <label for="automatic">Автоматическая</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="handle"
+              value="Вручную"
+              name="generationType"
+              required
+            />
+            <label for="handle">Вручную</label>
+          </div>
+        </div>
+        <div class="automatic-holder">
+          <label for="petsCount"
+            >Сколько животных будет участвовать? (минимальное кол-во участников
+            - 3, максимальное - 50)</label
+          >
+          <div>
+            <input
+              type="range"
+              id="petsCount"
+              value="3"
+              min="3"
+              max="50"
+              oninput="this.nextElementSibling.value = this.value"
+              required
+            />
+            <output>3</output>
+          </div>
+
+          <label for="petsName"
+            >Введите клички животных через запятую. (Если есть несколько
+            животных со схожими именами - придумайте отличающий элемент)</label
+          >
+          <textarea
+            name="petsName"
+            id="petsName"
+            rows="4"
+            cols="50"
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Подтвердить</button>
+      </form>
+    </div>
+  </body>
+</html>
