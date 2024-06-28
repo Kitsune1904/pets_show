@@ -33,33 +33,31 @@
     <div class="about">
       <h2>Заполните форму</h2>
       <form>
-        <div class="question">
-          <p>
-            Выбирите удобный Вам формат пользования таблицей.
-            <span>Автоматическая</span> генерация таблицы, когда Вы сразу знаете
-            кол-во участников. Генерация таблицы <span>вручную</span>, с
-            постепенным добавлением участников.
-          </p>
-          <div>
-            <input
-              type="radio"
-              id="automatic"
-              value="Автоматическая"
-              name="generationType"
-              required
-            />
-            <label for="automatic">Автоматическая</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="handle"
-              value="Вручную"
-              name="generationType"
-              required
-            />
-            <label for="handle">Вручную</label>
-          </div>
+        <p>
+          Выбирите удобный Вам формат пользования таблицей.
+          <span>Автоматическая</span> генерация таблицы, когда Вы сразу знаете
+          кол-во участников. Генерация таблицы <span>вручную</span>, с
+          постепенным добавлением участников.
+        </p>
+        <div>
+          <input
+            type="radio"
+            id="automatic"
+            value="Автоматическая"
+            name="generationType"
+            required
+          />
+          <label for="automatic">Автоматическая</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="handle"
+            value="Вручную"
+            name="generationType"
+            required
+          />
+          <label for="handle">Вручную</label>
         </div>
         <div class="automatic-holder">
           <label for="petsCount"
@@ -77,19 +75,21 @@
               required
             />
             <output>3</output>
+            <div>
+              <label for="petsName"
+                >Введите клички животных через запятую. (Если есть несколько
+                животных со схожими именами - придумайте отличающий
+                элемент)</label
+              >
+              <textarea
+                name="petsName"
+                id="petsName"
+                rows="4"
+                cols="50"
+                required
+              ></textarea>
+            </div>
           </div>
-
-          <label for="petsName"
-            >Введите клички животных через запятую. (Если есть несколько
-            животных со схожими именами - придумайте отличающий элемент)</label
-          >
-          <textarea
-            name="petsName"
-            id="petsName"
-            rows="4"
-            cols="50"
-            required
-          ></textarea>
         </div>
         <button type="submit">Подтвердить</button>
       </form>

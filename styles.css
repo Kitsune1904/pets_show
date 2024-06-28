@@ -17,12 +17,12 @@ body {
   margin: 0 auto;
 }
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .card-holder {
   display: grid;
