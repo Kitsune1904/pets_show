@@ -59,22 +59,40 @@
           />
           <label for="handle">Вручную</label>
         </div>
+        <label for="juryCount">
+          Со скольки человек будет состоять жюри? (минимальное кол-во - 2,
+          максимальное - 8)
+        </label>
+        <div>
+          <input
+            type="range"
+            id="juryCount"
+            value="2"
+            min="2"
+            max="8"
+            oninput="this.nextElementSibling.value = this.value"
+            required
+          />
+          <output>2</output>
+        </div>
         <div class="automatic-holder">
-          <label for="petsCount"
-            >Сколько животных будет участвовать? (минимальное кол-во участников
-            - 3, максимальное - 50)</label
-          >
           <div>
-            <input
-              type="range"
-              id="petsCount"
-              value="3"
-              min="3"
-              max="50"
-              oninput="this.nextElementSibling.value = this.value"
-              required
-            />
-            <output>3</output>
+            <label for="petsCount">
+              Сколько животных будет участвовать? (минимальное кол-во участников
+              - 3, максимальное - 20)
+            </label>
+            <div>
+              <input
+                type="range"
+                id="petsCount"
+                value="3"
+                min="3"
+                max="20"
+                oninput="this.nextElementSibling.value = this.value"
+                required
+              />
+              <output>3</output>
+            </div>
             <div>
               <label for="petsName"
                 >Введите клички животных через запятую. (Если есть несколько

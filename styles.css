@@ -28,6 +28,10 @@ body {
 
 }
 
+textarea {
+  display: block;
+}
+
 /* form {
   display: flex;
   flex-direction: column;
