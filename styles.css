@@ -63,6 +63,6 @@ img {
   border-radius: 8px;
 }
 
-.question > p > span {
+p > span {
   font-weight: bold;
 }
