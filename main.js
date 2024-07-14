@@ -7,9 +7,12 @@ const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
 const autoBlock = document.getElementsByClassName("auto")[0];
 
+const tableHolder = document.getElementById("tableHolder");
+
 const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
 
+const juryCount = document.getElementById("juryCount");
 const petsCount = document.getElementById("petsCount");
 const petsName = document.getElementById("petsName");
 
@@ -55,8 +58,26 @@ const isNormalData = (checkedEl, petsNum) => {
   return true;
 };
 
+const createAutoTable = (petsCount, juryCount, petsNames) => {
+  const title = `Добро пожаловать на выставку ${choosenId === "catBtn" ? "кошек" : "собак"}`
+  tableHolder.innerHTML = `
+    <h2>${title}</h2>
+    <table>
+    ${
+
+    }
+    </table>
+  `
+}
+
 autoAgree.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
-  const count = petsCount.value;
-  isNormalData(petsNameArr, count);
+  const petsNum = petsCount.value;
+  const juryNum = juryCount.value
+  if(isNormalData(petsNameArr, petsNum)) {
+
+  } else {
+    alert("Выполните все условия для генерации таблицы")
+  }
+  ;
 });
