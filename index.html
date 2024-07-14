@@ -7,32 +7,116 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="main">
-      <h1>Добро пожаловать!</h1>
-      <p>
-        Для того что-бы начать пользоваться нашим приложением - выберите среди
-        каких животных будет проводиться выставка.
-      </p>
-      <div class="card-holder">
-        <div class="card">
-          <img
-            src="./img/adorable-looking-kitten-with-sunglasses.jpg"
-            alt="adorable looking cat with sunglasses"
-          />
-          <button id="cat-btn">Выставка кошек</button>
+    <div class="background">
+      <div class="container">
+        <div class="main">
+          <h1>Добро пожаловать!</h1>
+          <p>
+            Для того что-бы начать пользоваться нашим приложением - выберите
+            среди каких животных будет проводиться выставка.
+          </p>
+          <div class="card-holder">
+            <div class="card">
+              <img
+                src="./img/adorable-looking-kitten-with-sunglasses.jpg"
+                alt="adorable looking cat with sunglasses"
+              />
+              <button id="catBtn" class="choose-btn">Выставка кошек</button>
+            </div>
+            <div class="card">
+              <img
+                src="./img/adorable-looking-dog-with-sunglasses.jpg"
+                alt="adorable looking dog with sunglasses"
+              />
+              <button id="dogBtn" class="choose-btn">Выставка собак</button>
+            </div>
+          </div>
         </div>
-        <div class="card">
+        <div class="mode">
           <img
-            src="./img/adorable-looking-dog-with-sunglasses.jpg"
-            alt="adorable looking dog with sunglasses"
+            src="./img/back-arrow.png"
+            alt="back-arrow"
+            class="back-arrow"
+            id="backPetsArrow"
           />
-          <button id="cat-btn">Выставка собак</button>
+          <h2>В каком режиме будем работать?</h2>
+          <p>Мне предлагаем несколько режимов работы.</p>
+          <p>
+            Первый - <span class="acent">автоматический</span> вы вводите кол-во
+            участников, их клички и указываете со скольки человек будет состоять
+            жюри. Далее мы автоматически нарисуем таблицу, в которой вы будете
+            иметь возможность вводить баллы заработанные участниками от каждого
+            члена жюри.
+          </p>
+          <p>
+            Второй - <span class="acent">ручной</span>, он предполагает
+            постепенное создание таблицы. По нажатию кнопки
+            <span class="special">"добавить участника"</span> будет добавлен еще
+            один ряд к таблице. (полезно когда кол-во участников не известно
+            заранее).
+          </p>
+          <div>
+            <button id="automatic">Автоматический</button>
+            <button id="handle">Ручной</button>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="about">
-      <h2>Заполните форму</h2>
-      <form>
+        <div class="auto">
+          <img
+          src="./img/back-arrow.png"
+          alt="back-arrow"
+          class="back-arrow"
+          id="backAutoArrow"
+        />
+          <label for="juryCount">
+            Со скольки человек будет состоять жюри? (минимальное кол-во - 2,
+            максимальное - 8)
+          </label>
+          <div>
+            <input
+              type="range"
+              id="juryCount"
+              value="2"
+              min="2"
+              max="8"
+              oninput="this.nextElementSibling.value = this.value"
+            />
+            <output>2</output>
+          </div>
+          <label for="petsCount">
+            Сколько животных будет участвовать? (минимальное кол-во участников -
+            3, максимальное - 20)
+          </label>
+          <div>
+            <input
+              type="range"
+              id="petsCount"
+              value="3"
+              min="3"
+              max="20"
+              oninput="this.nextElementSibling.value = this.value"
+            />
+            <output>3</output>
+          </div>
+          <div>
+            <label for="petsName"
+              >Введите клички животных через запятую. (Если есть несколько
+              животных со схожими именами - придумайте отличающий
+              элемент)</label
+            >
+            <textarea
+              name="petsName"
+              id="petsName"
+              rows="4"
+              cols="50"
+            ></textarea>
+          </div>
+          <button id="autoAgree">
+            Сгенерировать таблицу
+          </button>
+        </div>
+        <div class="hand"></div>
+
+        <!--       <form id="form">
         <p>
           Выбирите удобный Вам формат пользования таблицей.
           <span>Автоматическая</span> генерация таблицы, когда Вы сразу знаете
@@ -47,7 +131,7 @@
             name="generationType"
             required
           />
-          <label for="automatic">Автоматическая</label>
+          <label for="automatic" class="mode">Автоматическая</label>
         </div>
         <div>
           <input
@@ -57,9 +141,9 @@
             name="generationType"
             required
           />
-          <label for="handle">Вручную</label>
+          <label for="handle" class="mode">Вручную</label>
         </div>
-        <label for="juryCount">
+        <label for="juryCount" >
           Со скольки человек будет состоять жюри? (минимальное кол-во - 2,
           максимальное - 8)
         </label>
@@ -108,9 +192,10 @@
               ></textarea>
             </div>
           </div>
-        </div>
-        <button type="submit">Подтвердить</button>
-      </form>
+        </div> -->
+      </div>
     </div>
+
+    <script src="./main.js"></script>
   </body>
 </html>
