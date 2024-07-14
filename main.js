@@ -13,7 +13,6 @@ const backAutoArrow = document.getElementById("backAutoArrow");
 const petsCount = document.getElementById("petsCount");
 const petsName = document.getElementById("petsName");
 
-
 let choosenId;
 
 Array.from(chooseBtns).forEach((element) => {
@@ -29,11 +28,10 @@ backPetsArrow.addEventListener("click", () => {
   modeBlock.style.display = "none";
 });
 
-
 automatic.addEventListener("click", () => {
   modeBlock.style.display = "none";
   autoBlock.style.display = "flex";
-})
+});
 
 backAutoArrow.addEventListener("click", () => {
   autoBlock.style.display = "none";
@@ -41,26 +39,24 @@ backAutoArrow.addEventListener("click", () => {
 });
 
 const isNormalData = (checkedEl, petsNum) => {
-  const petsNames = checkedEl.value.split(",");
-  const count = petsNum.value;
-  const duplicates = petsNames.filter((item, index) => petsNames.indexOf(item) !== index);
-  console.log(petsNames)
-  console.log(petsNames.length)
-  console.log(count)
-  console.log(duplicates)
-  if(petsNames.length != count || petsNames.length === 1) {
-    alert("Введенное кол-во имен не совпадает с кол-вом участников.")
-    return false
+  const duplicates = checkedEl.filter((item, index) => checkedEl.indexOf(item) !== index);
+  if (checkedEl.length != petsNum || checkedEl.length === 1) {
+    alert("Введенное кол-во имен не совпадает с кол-вом участников.");
+    return false;
   }
-  if(duplicates.length != 0) {
-    alert(`У вас повторяются имена животных. Придумайте для ${duplicates.map((value) => value)} отличия.`)
-    return false
+  if (duplicates.length != 0) {
+    alert(
+      `У вас повторяются имена животных. Придумайте для ${duplicates.map(
+        (value) => value
+      )} отличия.`
+    );
+    return false;
   }
-  return true
-}
-
-
+  return true;
+};
 
 autoAgree.addEventListener("click", () => {
-  isNormalData(petsName, petsCount)
-})
+  const petsNameArr = petsName.value.split(",");
+  const count = petsCount.value;
+  isNormalData(petsNameArr, count);
+});
