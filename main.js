@@ -1,7 +1,7 @@
 const chooseBtns = document.getElementsByClassName("choose-btn");
 const automaticBtn = document.getElementById("automatic");
 const handleBtn = document.getElementById("handle");
-const autoAgreeBtn = document.getElementById("autoAgree");
+const createAutoTableBtn = document.getElementById("autoAgree");
 
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
@@ -32,7 +32,7 @@ backPetsArrow.addEventListener("click", () => {
   modeBlock.style.display = "none";
 });
 
-automatic.addEventListener("click", () => {
+automaticBtn.addEventListener("click", () => {
   modeBlock.style.display = "none";
   autoBlock.style.display = "flex";
 });
@@ -92,7 +92,7 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
 
 
 
-autoAgree.addEventListener("click", () => {
+createAutoTableBtn.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
   const petsNum = Number(petsCount.value);
   const juryNum = Number(juryCount.value);
