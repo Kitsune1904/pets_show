@@ -6,12 +6,15 @@ const createAutoTableBtn = document.getElementById("autoAgree");
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
 const autoBlock = document.getElementsByClassName("auto")[0];
-
 const tableBlock = document.getElementById("tableHolder");
+
 const tableTitle = document.getElementById("tableTitle");
+const tableContainer = document.getElementById("tableContainer");
 
 const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
+const backAutoTableArrow = document.getElementById("backAutoTableArrow");
+
 
 const juryCount = document.getElementById("juryCount");
 const petsCount = document.getElementById("petsCount");
@@ -40,6 +43,12 @@ automaticBtn.addEventListener("click", () => {
 backAutoArrow.addEventListener("click", () => {
   autoBlock.style.display = "none";
   modeBlock.style.display = "flex";
+});
+
+backAutoTableArrow.addEventListener("click", () => {
+  tableContainer.innerHTML = "";
+  tableBlock.style.display = "none";
+  autoBlock.style.display = "flex";
 });
 
 const isNormalData = (checkedEl, petsNum) => {
@@ -96,10 +105,8 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
     }
     table.appendChild(tableRow);
   }
-  tableBlock.appendChild(table);
+  tableContainer.appendChild(table);
 };
-
-
 
 createAutoTableBtn.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
