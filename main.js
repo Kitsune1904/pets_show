@@ -76,12 +76,21 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
       }
       else if (col == 0 && row != 0 ) {
         cell.appendChild(document.createTextNode(`${petsNames[row-1]}`));
-      } else if (col != 0 && row != 0) {
+      } else if (col != 0 && row != 0 && col != juryCount+1) {
         const input = document.createElement("input");
         input.type = "number"
         cell.appendChild(input);
-      } else if (col == juryCount+1) {
-        cell.appendChild(document.createTextNode(`${row == 0 ? "Сумма" : ""}`))
+      } else if (col == juryCount+1 && row == 0) {
+        cell.appendChild(document.createTextNode("Сумма"))
+      } else if (col == juryCount+1 && row != 0) {
+        cell.appendChild(document.createTextNode(""))
+      } else {
+        const petSpan = document.createElement("span");
+        const jurySpan = document.createElement("span");
+        petSpan.appendChild(document.createTextNode("Клички"));
+        jurySpan.appendChild(document.createTextNode("Судьи"));
+        cell.appendChild(jurySpan);
+        cell.appendChild(petSpan);
       }
       tableRow.appendChild(cell);
     }
