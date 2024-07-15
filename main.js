@@ -8,6 +8,7 @@ const modeBlock = document.getElementsByClassName("mode")[0];
 const autoBlock = document.getElementsByClassName("auto")[0];
 
 const tableHolder = document.getElementById("tableHolder");
+const tableTitle = document.getElementById("tableTitle");
 
 const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
@@ -42,7 +43,9 @@ backAutoArrow.addEventListener("click", () => {
 });
 
 const isNormalData = (checkedEl, petsNum) => {
-  const duplicates = checkedEl.filter((item, index) => checkedEl.indexOf(item) !== index);
+  const duplicates = checkedEl.filter(
+    (item, index) => checkedEl.indexOf(item) !== index
+  );
   if (checkedEl.length != petsNum || checkedEl.length === 1) {
     alert("Введенное кол-во имен не совпадает с кол-вом участников.");
     return false;
@@ -59,25 +62,45 @@ const isNormalData = (checkedEl, petsNum) => {
 };
 
 const createAutoTable = (petsCount, juryCount, petsNames) => {
-  const title = `Добро пожаловать на выставку ${choosenId === "catBtn" ? "кошек" : "собак"}`
-  tableHolder.innerHTML = `
-    <h2>${title}</h2>
-    <table>
-    ${
-
+  const title = `Добро пожаловать на выставку ${
+    choosenId === "catBtn" ? "кошек!" : "собак!"
+  }`;
+  tableTitle.innerText = title;
+  const table = document.createElement("table");
+  for (let row = 0; row <= petsCount; row++) {
+    const tableRow = document.createElement("tr");
+    for (let col = 0; col <= juryCount+1; col++) {
+      const cell = document.createElement("td");
+      if (row == 0 && col != 0 && col != juryCount+1) {
+        cell.appendChild(document.createTextNode(`Судья ${col}`));
+      }
+      else if (col == 0 && row != 0 ) {
+        cell.appendChild(document.createTextNode(`${petsNames[row-1]}`));
+      } else if (col != 0 && row != 0) {
+        const input = document.createElement("input");
+        input.type = "number"
+        cell.appendChild(input);
+      } else if (col == juryCount+1) {
+        cell.appendChild(document.createTextNode(`${row == 0 ? "Сумма" : ""}`))
+      }
+      tableRow.appendChild(cell);
     }
-    </table>
-  `
-}
+    table.appendChild(tableRow);
+  }
+  tableHolder.appendChild(table);
+};
+
+
 
 autoAgree.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
-  const petsNum = petsCount.value;
-  const juryNum = juryCount.value
-  if(isNormalData(petsNameArr, petsNum)) {
-
+  const petsNum = +petsCount.value;
+  const juryNum = +juryCount.value;
+  if (isNormalData(petsNameArr, petsNum)) {
+    autoBlock.style.display = "none";
+    tableHolder.style.display = "flex";
+    createAutoTable(petsNum, juryNum, petsNameArr);
   } else {
-    alert("Выполните все условия для генерации таблицы")
+    alert("Выполните все условия для генерации таблицы");
   }
-  ;
 });
