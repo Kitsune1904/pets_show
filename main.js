@@ -1,13 +1,13 @@
 const chooseBtns = document.getElementsByClassName("choose-btn");
-const automatic = document.getElementById("automatic");
-const handle = document.getElementById("handle");
-const autoAgree = document.getElementById("autoAgree");
+const automaticBtn = document.getElementById("automatic");
+const handleBtn = document.getElementById("handle");
+const autoAgreeBtn = document.getElementById("autoAgree");
 
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
 const autoBlock = document.getElementsByClassName("auto")[0];
 
-const tableHolder = document.getElementById("tableHolder");
+const tableBlock = document.getElementById("tableHolder");
 const tableTitle = document.getElementById("tableTitle");
 
 const backPetsArrow = document.getElementById("backPetsArrow");
@@ -87,18 +87,18 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
     }
     table.appendChild(tableRow);
   }
-  tableHolder.appendChild(table);
+  tableBlock.appendChild(table);
 };
 
 
 
 autoAgree.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
-  const petsNum = +petsCount.value;
-  const juryNum = +juryCount.value;
+  const petsNum = Number(petsCount.value);
+  const juryNum = Number(juryCount.value);
   if (isNormalData(petsNameArr, petsNum)) {
     autoBlock.style.display = "none";
-    tableHolder.style.display = "flex";
+    tableBlock.style.display = "flex";
     createAutoTable(petsNum, juryNum, petsNameArr);
   } else {
     alert("Выполните все условия для генерации таблицы");
