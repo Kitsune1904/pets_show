@@ -2,6 +2,7 @@ const chooseBtns = document.getElementsByClassName("choose-btn");
 const automaticBtn = document.getElementById("automatic");
 const handleBtn = document.getElementById("handle");
 const createAutoTableBtn = document.getElementById("autoAgree");
+const reloadTableBtn = document.getElementById("reloadTableBtn");
 
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
@@ -15,12 +16,13 @@ const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
 const backAutoTableArrow = document.getElementById("backAutoTableArrow");
 
-
 const juryCount = document.getElementById("juryCount");
 const petsCount = document.getElementById("petsCount");
 const petsName = document.getElementById("petsName");
 
 let choosenId;
+let petsNum;
+let juryNum;
 
 Array.from(chooseBtns).forEach((element) => {
   element.addEventListener("click", () => {
@@ -47,6 +49,7 @@ backAutoArrow.addEventListener("click", () => {
 
 backAutoTableArrow.addEventListener("click", () => {
   tableContainer.innerHTML = "";
+  petsName.value = [];
   tableBlock.style.display = "none";
   autoBlock.style.display = "flex";
 });
@@ -76,23 +79,24 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
   }`;
   tableTitle.innerText = title;
   const table = document.createElement("table");
+  table.id = "tabela";
   for (let row = 0; row <= petsCount; row++) {
     const tableRow = document.createElement("tr");
-    for (let col = 0; col <= juryCount+1; col++) {
+    for (let col = 0; col <= juryCount + 1; col++) {
       const cell = document.createElement("td");
-      if (row == 0 && col != 0 && col != juryCount+1) {
+      if (row == 0 && col != 0 && col != juryCount + 1) {
         cell.appendChild(document.createTextNode(`Судья ${col}`));
-      }
-      else if (col == 0 && row != 0 ) {
-        cell.appendChild(document.createTextNode(`${petsNames[row-1]}`));
-      } else if (col != 0 && row != 0 && col != juryCount+1) {
+      } else if (col == 0 && row != 0) {
+        cell.appendChild(document.createTextNode(`${petsNames[row - 1]}`));
+      } else if (col != 0 && row != 0 && col != juryCount + 1) {
         const input = document.createElement("input");
-        input.type = "number"
+        input.type = "number";
+        input.value = `${col * 10}`;
         cell.appendChild(input);
-      } else if (col == juryCount+1 && row == 0) {
-        cell.appendChild(document.createTextNode("Сумма"))
-      } else if (col == juryCount+1 && row != 0) {
-        cell.appendChild(document.createTextNode(""))
+      } else if (col == juryCount + 1 && row == 0) {
+        cell.appendChild(document.createTextNode("Сумма"));
+      } else if (col == juryCount + 1 && row != 0) {
+        cell.appendChild(document.createTextNode(""));
       } else {
         const petSpan = document.createElement("span");
         const jurySpan = document.createElement("span");
@@ -110,13 +114,57 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
 
 createAutoTableBtn.addEventListener("click", () => {
   const petsNameArr = petsName.value.split(",");
-  const petsNum = Number(petsCount.value);
-  const juryNum = Number(juryCount.value);
+  petsNum = Number(petsCount.value);
+  juryNum = Number(juryCount.value);
   if (isNormalData(petsNameArr, petsNum)) {
     autoBlock.style.display = "none";
     tableBlock.style.display = "flex";
     createAutoTable(petsNum, juryNum, petsNameArr);
+    tableBlock.appendChild(reloadTableBtn);
   } else {
     alert("Выполните все условия для генерации таблицы");
   }
+});
+
+const getAndColorWinner = (juryCount, table, rows) => {
+  let sumArr = [];
+  for (let row = 1; row < rows; row++) {
+    let sum = 0;
+    for (let col = 1; col <= juryCount + 1; col++) {
+      if (col != juryCount + 1) {
+        let value = Number(table.rows[row].cells[col].children[0].value);
+        if (value === 0) {
+          alert("Заполните все поля");
+          throw new Error("not all values");
+        } else {
+          sum += value;
+        }
+      } else {
+        table.rows[row].cells[col].innerText = `${sum}`;
+      }
+    }
+    sumArr.push({ sum: sum, row: table.rows[row] });
+  }
+  sumArr.sort((a, b) => b.sum - a.sum);
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+  sumArr.forEach((item) => {
+    table.appendChild(item.row);
+  });
+  table.children[1].style.boxShadow =
+    "inset 0 10px 30px 5px rgba(255, 230, 0, 0.781)";
+  table.children[2].style.boxShadow =
+    "inset 0 10px 30px 5px rgba(221, 255, 255, 0.87)";
+  table.children[3].style.boxShadow =
+    "inset 0 10px 30px 5px rgba(189, 113, 0, 0.87)";
+  console.log(sumArr);
+  return sumArr;
+};
+
+reloadTableBtn.addEventListener("click", () => {
+  const table = document.getElementById("tabela");
+  const rows = table.rows.length;
+  juryNum = Number(juryCount.value);
+  getAndColorWinner(juryNum, table, rows);
 });

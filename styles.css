@@ -21,13 +21,13 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("./img/paw-pet-seamless-pattern-dog-or-cat-footprint-texture-foot-track-wallpaper-cute-colorful-background-with-animals-footprints-seamless-pattern-footprint-color-background-repeat-vector.jpg");
-  background-repeat: repeat;
   background-size: 60vw;
   filter: blur(2px);
 }
 
 .container {
-  width: 80vw;
+  min-width: 700px;
+  max-width: calc(100% - 30px);;
   margin: 0 auto;
   background: blanchedalmond;
   position: absolute;
@@ -147,7 +147,7 @@ p {
   width: 300px;
 }
 
-#autoAgree {
+#autoAgree, #reloadTableBtn {
   width: 70%;
   align-self: center;
 }
@@ -157,10 +157,11 @@ p {
   text-align: center;
 }
 
+
 .table-container > table input {
   padding: 5px;
   border: none;
-  width: 95%;
+  width: 120px;
   text-align: center;
   background-color: blanchedalmond;
   border-radius: 8px;
@@ -180,17 +181,31 @@ input:focus {
   outline-color:rgb(0, 195, 255);
 }
 
+.table-container {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
 .table-container > table {
   background-color: rgb(137, 111, 94);
   padding: 10px;
   border-radius: 8px;
   color: white;
-  width: 100%;
+  width: max-content;
   margin: 20px 0;
 }
 
 .table-container > table tr {
-  height: 30px;
+  height: 40px;
+  box-shadow: inset 0 10px 30px 5px rgba(255, 237, 205, 0.2);
+  border-radius: 8px;
+} 
+
+.table-container > table tr td {
+  padding: 5px 10px;
 }
 
 .table-container > table tr:nth-child(1) td:nth-child(1) {
@@ -198,6 +213,10 @@ input:focus {
   flex-direction: column;
   position: relative;
   min-width: 100px;
+}
+
+.table-container > table tr:nth-child(1) td {
+  width: 120px;
 }
 
 .table-container > table tr:nth-child(1) td:nth-child(1)::before {
@@ -208,7 +227,7 @@ input:focus {
   height: 1px;
   content: "";
   background-color: rgb(255, 255, 255);
-  transform: rotate(12deg) translateY(-50%);
+  transform: rotate(6deg) translateY(-50%);
 }
 
 .table-container > table tr:nth-child(1) td:nth-child(1) span:nth-child(1) {
