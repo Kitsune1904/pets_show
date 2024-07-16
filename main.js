@@ -3,6 +3,7 @@ const automaticBtn = document.getElementById("automatic");
 const handleBtn = document.getElementById("handle");
 const createAutoTableBtn = document.getElementById("autoAgree");
 const reloadTableBtn = document.getElementById("reloadTableBtn");
+const startAgainBtn = document.getElementById("startAgainBtn");
 
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
@@ -52,6 +53,10 @@ backAutoTableArrow.addEventListener("click", () => {
   petsName.value = [];
   tableBlock.style.display = "none";
   autoBlock.style.display = "flex";
+});
+
+startAgainBtn.addEventListener("click", () => {
+  location.reload(true)
 });
 
 const isNormalData = (checkedEl, petsNum) => {
@@ -156,7 +161,7 @@ const getAndColorWinner = (juryCount, table, rows) => {
   while (table.rows.length > 1) {
     table.deleteRow(1);
   }
-  
+
   sumArr.forEach((obj) => {
     const row = obj.row;
     console.log(obj)
@@ -190,5 +195,9 @@ reloadTableBtn.addEventListener("click", () => {
   const table = document.getElementById("tabela");
   const rows = table.rows.length;
   juryNum = Number(juryCount.value);
-  getAndColorWinner(juryNum, table, rows);
+  tableTitle.innerText = "Поздравляем победителей!";
+/*   tableTitle.getElementsByTagName("p")[0].innerText = "";
+ */  getAndColorWinner(juryNum, table, rows);
+  reloadTableBtn.style.display = "none";
+  startAgainBtn.style.display = "block";
 });

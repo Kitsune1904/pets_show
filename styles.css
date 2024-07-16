@@ -147,11 +147,14 @@ p {
   width: 300px;
 }
 
-#autoAgree, #reloadTableBtn {
+#autoAgree, #reloadTableBtn, #startAgainBtn {
   width: 70%;
   align-self: center;
 }
 
+#startAgainBtn {
+  display: none;
+}
 
 .table-holder > h2, .table-holder > p {
   text-align: center;
