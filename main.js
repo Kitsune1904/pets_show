@@ -55,17 +55,20 @@ backAutoTableArrow.addEventListener("click", () => {
 });
 
 const isNormalData = (checkedEl, petsNum) => {
-  const duplicates = checkedEl.filter(
+  const duplicates = [
+    ...new Set(checkedEl.filter((e, i, a) => a.indexOf(e) !== i)),
+  ];
+  /*   const duplicates = checkedEl.filter(
     (item, index) => checkedEl.indexOf(item) !== index
-  );
+  ); */
   if (checkedEl.length != petsNum || checkedEl.length === 1) {
     alert("Введенное кол-во имен не совпадает с кол-вом участников.");
     return false;
   }
   if (duplicates.length != 0) {
     alert(
-      `У вас повторяются имена животных. Придумайте для ${duplicates.map(
-        (value) => value
+      `У вас повторяются имена животных. Придумайте для ${duplicates.join(
+        ", "
       )} отличия.`
     );
     return false;
@@ -143,15 +146,36 @@ const getAndColorWinner = (juryCount, table, rows) => {
         table.rows[row].cells[col].innerText = `${sum}`;
       }
     }
-    sumArr.push({ sum: sum, row: table.rows[row] });
+    sumArr.push({ sum: sum, row: table.rows[row], place: -1 });
   }
   sumArr.sort((a, b) => b.sum - a.sum);
+  const unicSumArr = new Set(sumArr.map((obj) => obj.sum));
+  const sortedUnicSumArr = Array.from(unicSumArr).sort((a, b) => b - a);
+  sumArr.forEach((obj) => (obj.place = sortedUnicSumArr.indexOf(obj.sum) + 1));
+
   while (table.rows.length > 1) {
     table.deleteRow(1);
   }
-  sumArr.forEach((item) => {
-    table.appendChild(item.row);
+  
+  sumArr.forEach((obj) => {
+    const row = obj.row;
+    console.log(obj)
+    console.log(typeof obj.place)
+    switch (obj.place) {
+      case 1:
+        row.style.boxShadow = "inset 0 10px 30px 5px rgba(255, 230, 0, 0.781)";
+        break
+      case 2:
+        row.style.boxShadow = "inset 0 10px 30px 5px rgba(221, 255, 255, 0.87)";
+        break
+      case 3:
+        row.style.boxShadow = "inset 0 10px 30px 5px rgba(189, 113, 0, 0.87)";
+        break
+    }
+    table.appendChild(row);
   });
+
+  /*   sumArr.sort((a, b) => b.sum - a.sum);
   table.children[1].style.boxShadow =
     "inset 0 10px 30px 5px rgba(255, 230, 0, 0.781)";
   table.children[2].style.boxShadow =
@@ -159,7 +183,7 @@ const getAndColorWinner = (juryCount, table, rows) => {
   table.children[3].style.boxShadow =
     "inset 0 10px 30px 5px rgba(189, 113, 0, 0.87)";
   console.log(sumArr);
-  return sumArr;
+  return sumArr; */
 };
 
 reloadTableBtn.addEventListener("click", () => {
