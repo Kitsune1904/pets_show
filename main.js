@@ -56,16 +56,13 @@ backAutoTableArrow.addEventListener("click", () => {
 });
 
 startAgainBtn.addEventListener("click", () => {
-  location.reload(true)
+  location.reload(true);
 });
 
 const isNormalData = (checkedEl, petsNum) => {
   const duplicates = [
     ...new Set(checkedEl.filter((e, i, a) => a.indexOf(e) !== i)),
   ];
-  /*   const duplicates = checkedEl.filter(
-    (item, index) => checkedEl.indexOf(item) !== index
-  ); */
   if (checkedEl.length != petsNum || checkedEl.length === 1) {
     alert("Введенное кол-во имен не совпадает с кол-вом участников.");
     return false;
@@ -99,7 +96,6 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
       } else if (col != 0 && row != 0 && col != juryCount + 1) {
         const input = document.createElement("input");
         input.type = "number";
-        input.value = `${col * 10}`;
         cell.appendChild(input);
       } else if (col == juryCount + 1 && row == 0) {
         cell.appendChild(document.createTextNode("Сумма"));
@@ -157,38 +153,24 @@ const getAndColorWinner = (juryCount, table, rows) => {
   const unicSumArr = new Set(sumArr.map((obj) => obj.sum));
   const sortedUnicSumArr = Array.from(unicSumArr).sort((a, b) => b - a);
   sumArr.forEach((obj) => (obj.place = sortedUnicSumArr.indexOf(obj.sum) + 1));
-
   while (table.rows.length > 1) {
     table.deleteRow(1);
   }
-
   sumArr.forEach((obj) => {
     const row = obj.row;
-    console.log(obj)
-    console.log(typeof obj.place)
     switch (obj.place) {
       case 1:
         row.style.boxShadow = "inset 0 10px 30px 5px rgba(255, 230, 0, 0.781)";
-        break
+        break;
       case 2:
         row.style.boxShadow = "inset 0 10px 30px 5px rgba(221, 255, 255, 0.87)";
-        break
+        break;
       case 3:
         row.style.boxShadow = "inset 0 10px 30px 5px rgba(189, 113, 0, 0.87)";
-        break
+        break;
     }
     table.appendChild(row);
   });
-
-  /*   sumArr.sort((a, b) => b.sum - a.sum);
-  table.children[1].style.boxShadow =
-    "inset 0 10px 30px 5px rgba(255, 230, 0, 0.781)";
-  table.children[2].style.boxShadow =
-    "inset 0 10px 30px 5px rgba(221, 255, 255, 0.87)";
-  table.children[3].style.boxShadow =
-    "inset 0 10px 30px 5px rgba(189, 113, 0, 0.87)";
-  console.log(sumArr);
-  return sumArr; */
 };
 
 reloadTableBtn.addEventListener("click", () => {
@@ -196,8 +178,8 @@ reloadTableBtn.addEventListener("click", () => {
   const rows = table.rows.length;
   juryNum = Number(juryCount.value);
   tableTitle.innerText = "Поздравляем победителей!";
-/*   tableTitle.getElementsByTagName("p")[0].innerText = "";
- */  getAndColorWinner(juryNum, table, rows);
+  getAndColorWinner(juryNum, table, rows);
   reloadTableBtn.style.display = "none";
   startAgainBtn.style.display = "block";
+  backAutoTableArrow.style.display = "none";
 });
