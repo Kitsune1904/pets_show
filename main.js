@@ -15,6 +15,7 @@ const tableContainer = document.getElementById("tableContainer");
 
 const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
+const backHandleArrow = document.getElementById("backHandleArrow");
 const backAutoTableArrow = document.getElementById("backAutoTableArrow");
 
 const juryCount = document.getElementById("juryCount");
@@ -183,3 +184,8 @@ reloadTableBtn.addEventListener("click", () => {
   startAgainBtn.style.display = "block";
   backAutoTableArrow.style.display = "none";
 });
+
+
+handleBtn.addEventListener("click", () => {
+
+})

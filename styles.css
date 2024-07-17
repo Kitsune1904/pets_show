@@ -40,7 +40,7 @@ body {
   border-radius: 8px;
 }
 
-.main, .auto, .handle, .table-holder {
+.main, .auto, .handle, .table-holder, .table-holder-hand {
   flex-direction: column;
   justify-content: center;
   padding: 5%;
@@ -156,12 +156,14 @@ p {
   display: none;
 }
 
-.table-holder > h2, .table-holder > p {
+.table-holder > h2, .table-holder > p,
+.table-holder-hand > h2, .table-holder-hand > p {
   text-align: center;
 }
 
 
-.table-container > table input {
+.table-container > table input,
+.table-holder-hand > table input {
   padding: 5px;
   border: none;
   width: 120px;

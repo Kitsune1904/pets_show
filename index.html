@@ -114,7 +114,6 @@
             Сгенерировать таблицу
           </button>
         </div>
-        <div class="hand"></div>
         <div id="tableHolder" class="table-holder">
           <img
           src="./img/back-arrow.png"
@@ -128,84 +127,19 @@
           <button id="reloadTableBtn">Показать результаты</button>
           <button id="startAgainBtn">Начать сначала</button>
         </div>
-
-        <!--       <form id="form">
-        <p>
-          Выбирите удобный Вам формат пользования таблицей.
-          <span>Автоматическая</span> генерация таблицы, когда Вы сразу знаете
-          кол-во участников. Генерация таблицы <span>вручную</span>, с
-          постепенным добавлением участников.
-        </p>
-        <div>
-          <input
-            type="radio"
-            id="automatic"
-            value="Автоматическая"
-            name="generationType"
-            required
-          />
-          <label for="automatic" class="mode">Автоматическая</label>
+        <div id="tableHolderHand" class="table-holder-hand">
+          <img
+          src="./img/back-arrow.png"
+          alt="back-arrow"
+          class="back-arrow"
+          id="backAutoTableArrow"
+        />
+          <h2 id="tableTitle"></h2>
+          <p></p>
+          <div id="tableContainer" class="table-container"></div>
+          <button id="reloadHandTableBtn">Показать результаты</button>
+          <button id="startAgainHandBtn">Начать сначала</button>
         </div>
-        <div>
-          <input
-            type="radio"
-            id="handle"
-            value="Вручную"
-            name="generationType"
-            required
-          />
-          <label for="handle" class="mode">Вручную</label>
-        </div>
-        <label for="juryCount" >
-          Со скольки человек будет состоять жюри? (минимальное кол-во - 2,
-          максимальное - 8)
-        </label>
-        <div>
-          <input
-            type="range"
-            id="juryCount"
-            value="2"
-            min="2"
-            max="8"
-            oninput="this.nextElementSibling.value = this.value"
-            required
-          />
-          <output>2</output>
-        </div>
-        <div class="automatic-holder">
-          <div>
-            <label for="petsCount">
-              Сколько животных будет участвовать? (минимальное кол-во участников
-              - 3, максимальное - 20)
-            </label>
-            <div>
-              <input
-                type="range"
-                id="petsCount"
-                value="3"
-                min="3"
-                max="20"
-                oninput="this.nextElementSibling.value = this.value"
-                required
-              />
-              <output>3</output>
-            </div>
-            <div>
-              <label for="petsName"
-                >Введите клички животных через запятую. (Если есть несколько
-                животных со схожими именами - придумайте отличающий
-                элемент)</label
-              >
-              <textarea
-                name="petsName"
-                id="petsName"
-                rows="4"
-                cols="50"
-                required
-              ></textarea>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
 
