@@ -5,6 +5,12 @@ const createAutoTableBtn = document.getElementById("autoAgree");
 const reloadTableBtn = document.getElementById("reloadTableBtn");
 const startAgainBtn = document.getElementById("startAgainBtn");
 
+
+const reloadHandTableBtn = document.getElementById("reloadHandTableBtn");
+const startAgainHandBtn = document.getElementById("startAgainHandBtn");
+
+const settingsBtns = document.getElementsByClassName("settings");
+
 const mainBlock = document.getElementsByClassName("main")[0];
 const modeBlock = document.getElementsByClassName("mode")[0];
 const autoBlock = document.getElementsByClassName("auto")[0];
@@ -17,6 +23,7 @@ const backPetsArrow = document.getElementById("backPetsArrow");
 const backAutoArrow = document.getElementById("backAutoArrow");
 const backHandleArrow = document.getElementById("backHandleArrow");
 const backAutoTableArrow = document.getElementById("backAutoTableArrow");
+const backHandTableArrow = document.getElementById("backHandTableArrow");
 
 const juryCount = document.getElementById("juryCount");
 const petsCount = document.getElementById("petsCount");
@@ -56,7 +63,16 @@ backAutoTableArrow.addEventListener("click", () => {
   autoBlock.style.display = "flex";
 });
 
+backHandTableArrow.addEventListener("click", () => {
+  tableHolderHand.style.display = "none";
+  modeBlock.style.display = "flex";
+})
+
 startAgainBtn.addEventListener("click", () => {
+  location.reload(true);
+});
+
+startAgainHandBtn.addEventListener("click", () => {
   location.reload(true);
 });
 
@@ -131,17 +147,28 @@ createAutoTableBtn.addEventListener("click", () => {
   }
 });
 
-const getAndColorWinner = (juryCount, table, rows) => {
+const getAndColorWinner = (juryCount, table, rowsNum, isHandle) => {
   let sumArr = [];
-  for (let row = 1; row < rows; row++) {
+  for (let row = 1; row < rowsNum; row++) {
     let sum = 0;
     for (let col = 1; col <= juryCount + 1; col++) {
       if (col != juryCount + 1) {
-        let value = Number(table.rows[row].cells[col].children[0].value);
+        if (isHandle) {
+          const valueName = table.rows[row].cells[0].children[0];
+          valueName.disabled = true;
+          if (valueName == "") {
+            alert("Нет клички животного");
+            throw new Error("not all values");
+          }
+        }
+        const value = Number(table.rows[row].cells[col].children[0].value);
+        const inputObj = table.rows[row].cells[col].children[0];
+        inputObj.disabled = true;
         if (value === 0) {
           alert("Заполните все поля");
           throw new Error("not all values");
         } else {
+          
           sum += value;
         }
       } else {
@@ -179,13 +206,110 @@ reloadTableBtn.addEventListener("click", () => {
   const rows = table.rows.length;
   juryNum = Number(juryCount.value);
   tableTitle.innerText = "Поздравляем победителей!";
-  getAndColorWinner(juryNum, table, rows);
+  getAndColorWinner(juryNum, table, rows, false);
   reloadTableBtn.style.display = "none";
   startAgainBtn.style.display = "block";
   backAutoTableArrow.style.display = "none";
 });
 
+const createAndFillRow = (colNum) => {
+  const row = document.createElement("tr");
+  for (let i = 0; i < colNum - 1; i++) {
+    const input = document.createElement("input");
+    const col = row.insertCell();
+    if (i == 0) {
+      input.type = "text";
+    } else {
+      input.type = "number";
+    }
+    col.appendChild(input);
+    row.appendChild(col);
+  }
+  return row;
+};
+
+const addAndRemoveCell = (table, isAdd) => {
+  for (let i = 0; i < table.rowsNum; i++) {
+    const row = table.body.rows[i];
+    const input = document.createElement("input");
+    const place = table.colCount - 1;
+    if (isAdd) {
+      const newCell = row.insertCell(place);
+      if (table.colCount > 10) {
+        alert("Вы не можете добавить больше 10 судей");
+        throw new Error("Cant add more columes");
+      }
+      if (i == 0) {
+        newCell.innerText = `Судья ${table.colCount - 1}`;
+      } else {
+        input.type = "number";
+        newCell.appendChild(input);
+      }
+    } else {
+      if (table.colCount == 4) {
+        alert("Вы не можете удалить этот столбец");
+        throw new Error("Cant delete this col");
+      } else {
+        row.deleteCell(table.colCount - 2);
+      }
+    }
+  }
+};
+
+const settHandleTable = (actionType, table) => {
+  switch (actionType) {
+    case "addRow":
+      if (table.rowsNum >= 20) {
+        alert("Вы не можете добавить больше 20 строк");
+      }
+      table.body.appendChild(createAndFillRow(table.colCount));
+      break;
+    case "removeRow":
+      if (table.rowsNum == 3) {
+        alert("Вы не можете удалить эту строку");
+      } else {
+        table.body.deleteRow(table.rowsNum - 1);
+      }
+      break;
+    case "addCol":
+      addAndRemoveCell(table, true);
+      break;
+    case "removeCol":
+      addAndRemoveCell(table, false);
+      break;
+  }
+};
 
 handleBtn.addEventListener("click", () => {
+  tableHolderHand.style.display = "flex";
+  modeBlock.style.display = "none";
+});
 
-})
+const getTableInfo = () => {
+  const handTableInfo = {};
+  handTableInfo.body = document.getElementById("handleTableBlock");
+  handTableInfo.rowsArr = Array.from(handleTableBlock.rows);
+  handTableInfo.rowsNum = handTableInfo.rowsArr.length;
+  handTableInfo.colCount = handTableInfo.rowsArr[0].children.length;
+  return handTableInfo;
+};
+
+Array.from(settingsBtns).forEach((element) => {
+  element.addEventListener("click", () => {
+    const handTableInfo = getTableInfo();
+    const actionType = element.id;
+    settHandleTable(actionType, handTableInfo);
+  });
+});
+
+reloadHandTableBtn.addEventListener("click", () => {
+  const handTableInfo = getTableInfo();
+  console.log(handTableInfo);
+  const juryCount = handTableInfo.colCount - 2;
+  getAndColorWinner(juryCount, handTableInfo.body, handTableInfo.rowsNum, true);
+  Array.from(settingsBtns).forEach(
+    (element) => (element.style.display = "none")
+  );
+  reloadHandTableBtn.style.display = "none";
+  startAgainHandBtn.style.display = "block";
+});
