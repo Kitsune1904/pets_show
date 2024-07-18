@@ -313,3 +313,8 @@ input:focus {
 #startAgainHandBtn {
   display: none;
 }
+
+.congrat {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

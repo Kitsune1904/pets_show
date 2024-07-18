@@ -5,7 +5,6 @@ const createAutoTableBtn = document.getElementById("autoAgree");
 const reloadTableBtn = document.getElementById("reloadTableBtn");
 const startAgainBtn = document.getElementById("startAgainBtn");
 
-
 const reloadHandTableBtn = document.getElementById("reloadHandTableBtn");
 const startAgainHandBtn = document.getElementById("startAgainHandBtn");
 
@@ -66,7 +65,7 @@ backAutoTableArrow.addEventListener("click", () => {
 backHandTableArrow.addEventListener("click", () => {
   tableHolderHand.style.display = "none";
   modeBlock.style.display = "flex";
-})
+});
 
 startAgainBtn.addEventListener("click", () => {
   location.reload(true);
@@ -152,25 +151,24 @@ const getAndColorWinner = (juryCount, table, rowsNum, isHandle) => {
   for (let row = 1; row < rowsNum; row++) {
     let sum = 0;
     for (let col = 1; col <= juryCount + 1; col++) {
-      if (col != juryCount + 1) {
-        if (isHandle) {
-          const valueName = table.rows[row].cells[0].children[0];
-          valueName.disabled = true;
-          if (valueName == "") {
-            alert("Нет клички животного");
-            throw new Error("not all values");
-          }
+      if (isHandle) {
+        const valueName = table.rows[row].cells[0].children[0].value;
+        if (valueName == "") {
+          alert("Нет клички животного");
+          throw new Error("not all values");
         }
+        table.rows[row].cells[0].children[0].disabled = true;
+      }
+      if (col != juryCount + 1) {
         const value = Number(table.rows[row].cells[col].children[0].value);
-        const inputObj = table.rows[row].cells[col].children[0];
-        inputObj.disabled = true;
         if (value === 0) {
           alert("Заполните все поля");
           throw new Error("not all values");
         } else {
-          
           sum += value;
         }
+        const inputObj = table.rows[row].cells[col].children[0];
+        inputObj.disabled = true;
       } else {
         table.rows[row].cells[col].innerText = `${sum}`;
       }
@@ -210,20 +208,26 @@ reloadTableBtn.addEventListener("click", () => {
   reloadTableBtn.style.display = "none";
   startAgainBtn.style.display = "block";
   backAutoTableArrow.style.display = "none";
+  tableTitle.innerText = "Поздравляем победителей!!!";
+  document.getElementById("autoText").style.display = "none";
 });
 
 const createAndFillRow = (colNum) => {
   const row = document.createElement("tr");
-  for (let i = 0; i < colNum - 1; i++) {
+  for (let i = 0; i < colNum; i++) {
     const input = document.createElement("input");
-    const col = row.insertCell();
-    if (i == 0) {
-      input.type = "text";
+    const col = document.createElement("td");
+    if (i == colNum - 1) {
+      row.appendChild(col);
     } else {
-      input.type = "number";
+      if (i == 0) {
+        input.type = "text";
+      } else {
+        input.type = "number";
+      }
+      col.appendChild(input);
+      row.appendChild(col);
     }
-    col.appendChild(input);
-    row.appendChild(col);
   }
   return row;
 };
@@ -232,7 +236,7 @@ const addAndRemoveCell = (table, isAdd) => {
   for (let i = 0; i < table.rowsNum; i++) {
     const row = table.body.rows[i];
     const input = document.createElement("input");
-    const place = table.colCount - 1;
+    const place = table.colCount;
     if (isAdd) {
       const newCell = row.insertCell(place);
       if (table.colCount > 10) {
@@ -303,13 +307,17 @@ Array.from(settingsBtns).forEach((element) => {
 });
 
 reloadHandTableBtn.addEventListener("click", () => {
-  const handTableInfo = getTableInfo();
+  let handTableInfo = getTableInfo();
   console.log(handTableInfo);
   const juryCount = handTableInfo.colCount - 2;
   getAndColorWinner(juryCount, handTableInfo.body, handTableInfo.rowsNum, true);
   Array.from(settingsBtns).forEach(
     (element) => (element.style.display = "none")
   );
-  reloadHandTableBtn.style.display = "none";
+  backHandTableArrow.style.display = "none";
   startAgainHandBtn.style.display = "block";
+  reloadHandTableBtn.style.display = "none";
+  const p = document.getElementById("handText");
+  p.classList.add("congrat");
+  p.innerText = "Поздравляем победителей!!!";
 });
