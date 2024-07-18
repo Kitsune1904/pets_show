@@ -236,7 +236,7 @@ const addAndRemoveCell = (table, isAdd) => {
   for (let i = 0; i < table.rowsNum; i++) {
     const row = table.body.rows[i];
     const input = document.createElement("input");
-    const place = table.colCount;
+    const place = table.colCount - 1;
     if (isAdd) {
       const newCell = row.insertCell(place);
       if (table.colCount > 10) {
