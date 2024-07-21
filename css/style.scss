@@ -432,6 +432,8 @@ ul, ol {
     .table-container-handle {
         display: grid;
         justify-items: center;
+        width: 100%;
+        overflow-x: auto;
     }
     
     .table-container > table,
