@@ -9,25 +9,9 @@ body {
   margin: 0;
 }
 
-.background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.background::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-image: url("./img/paw-pet-seamless-pattern-dog-or-cat-footprint-texture-foot-track-wallpaper-cute-colorful-background-with-animals-footprints-seamless-pattern-footprint-color-background-repeat-vector.jpg");
-  background-size: 60vw;
-  filter: blur(2px);
-}
-
 .container {
   min-width: 700px;
-  max-width: calc(100% - 30px);;
+  max-width: calc(100% - 30px);
   margin: 0 auto;
   background: blanchedalmond;
   position: absolute;

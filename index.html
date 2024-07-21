@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pets Show</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="background">
+
       <div class="container">
         <div class="main">
-          <h1>Добро пожаловать!</h1>
+          <h2>Добро пожаловать!</h2>
           <p>
-            Для того что-бы начать пользоваться нашим приложением - выберите
-            среди каких животных будет проводиться выставка.
+            Выберите среди каких животных будет проводиться выставка, чтобы начать пользоваться нашим приложением.
           </p>
           <div class="card-holder">
             <div class="card">
@@ -21,35 +20,35 @@
                 src="./img/adorable-looking-kitten-with-sunglasses.jpg"
                 alt="adorable looking cat with sunglasses"
               />
-              <button id="catBtn" class="choose-btn">Выставка кошек</button>
+              <button id="catBtn" class="choose-btn">Кошки</button>
             </div>
             <div class="card">
               <img
                 src="./img/adorable-looking-dog-with-sunglasses.jpg"
                 alt="adorable looking dog with sunglasses"
               />
-              <button id="dogBtn" class="choose-btn">Выставка собак</button>
+              <button id="dogBtn" class="choose-btn">Собаки</button>
             </div>
           </div>
         </div>
         <div class="mode">
           <img
-            src="./img/back-arrow.png"
-            alt="back-arrow"
-            class="back-arrow"
+            src="./img/arrow-back.png"
+            alt="arrow-back"
+            class="arrow-back"
             id="backPetsArrow"
           />
           <h2>В каком режиме будем работать?</h2>
-          <p>Мне предлагаем несколько режимов работы.</p>
+          <p>Мы предлагаем несколько режимов работы.</p>
           <p>
-            Первый - <span class="acent">автоматический</span> вы вводите кол-во
-            участников, их клички и указываете со скольки человек будет состоять
+            <span class="accent-orange">Автоматический</span> - вы вводите кол-во
+            участников, их клички и указываете из скольки человек будет состоять
             жюри. Далее мы автоматически нарисуем таблицу, в которой вы будете
             иметь возможность вводить баллы заработанные участниками от каждого
             члена жюри.
           </p>
           <p>
-            Второй - <span class="acent">ручной</span>, он предполагает
+            <span class="accent-blue">Ручной</span> - предполагает
             постепенное создание таблицы. По нажатию кнопки
             <span class="special">"добавить участника"</span> будет добавлен еще
             один ряд к таблице. (полезно когда кол-во участников не известно
@@ -62,9 +61,9 @@
         </div>
         <div class="auto">
           <img
-            src="./img/back-arrow.png"
-            alt="back-arrow"
-            class="back-arrow"
+            src="./img/arrow-back.png"
+            alt="arrow-back"
+            class="arrow-back"
             id="backAutoArrow"
           />
           <label for="juryCount">
@@ -106,17 +105,16 @@
             <textarea
               name="petsName"
               id="petsName"
-              rows="4"
-              cols="50"
             ></textarea>
           </div>
           <button id="autoAgree">Сгенерировать таблицу</button>
         </div>
+
         <div id="tableHolder" class="table-holder">
           <img
-            src="./img/back-arrow.png"
-            alt="back-arrow"
-            class="back-arrow"
+            src="./img/arrow-back.png"
+            alt="arrow-back"
+            class="arrow-back"
             id="backAutoTableArrow"
           />
           <h2 id="tableTitle"></h2>
@@ -128,11 +126,12 @@
           <button id="reloadTableBtn">Показать результаты</button>
           <button id="startAgainBtn">Начать сначала</button>
         </div>
+        
         <div id="tableHolderHand" class="table-holder-hand">
           <img
-            src="./img/back-arrow.png"
-            alt="back-arrow"
-            class="back-arrow"
+            src="./img/arrow-back.png"
+            alt="arrow-back"
+            class="arrow-back"
             id="backHandTableArrow"
           />
           <p id="handText">
@@ -178,7 +177,7 @@
           </div>
         </div>
       </div>
-    </div>
+
     <script src="./main.js"></script>
   </body>
 </html>

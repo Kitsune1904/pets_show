@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: url("../img/bgPattern.jpg");
+  background-size: 90%;
+  background-repeat: repeat;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  padding: 20px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #FFDEAD;
+  border-radius: 8px;
+}
+.container p {
+  font-size: 16px;
+  color: #563E37;
+  line-height: 1.5;
+}
+.container .main, .container .mode, .container .auto, .container .handle, .container .table-holder, .container .table-holder-hand {
+  flex-direction: column;
+  justify-content: center;
+}
+.container .main {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-block: 25px;
+  padding-inline: 15px;
+}
+.container .main h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #30251D;
+}
+.container .main .card-holder {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.container .main .card-holder .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.container .main .card-holder .card img {
+  width: 125px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px #7A6456;
+}
+.container .main .card-holder .card button {
+  width: 125px;
+  height: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px #7A6456;
+  background-color: #FEAF3C;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  color: #563E37;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.container .main .card-holder .card button:hover, .container .main .card-holder .card button:active {
+  background-color: #F8833E;
+  color: #30251D;
+}
+.container .main .card-holder .card:last-of-type button {
+  background-color: #7BC5C5;
+}
+.container .main .card-holder .card:last-of-type button:hover, .container .main .card-holder .card:last-of-type button:active {
+  background-color: #2DA3A5;
+  color: #30251D;
+}
+.container .mode,
+.container .auto,
+.container .table-holder,
+.container .table-holder-hand {
+  display: none;
+}
+.container .arrow-back {
+  display: inline-block;
+  width: 24px;
+  align-self: flex-start;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.container .arrow-back:hover {
+  filter: drop-shadow(0 0 4px #F8833E);
+}
+.container .mode {
+  align-items: center;
+  gap: 10px;
+  padding-block: 25px;
+  padding-inline: 15px;
+}
+.container .mode h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #30251D;
+}
+.container .mode .accent-orange {
+  font-weight: 700;
+  color: #F8833E;
+}
+.container .mode .accent-blue {
+  font-weight: 700;
+  color: #2DA3A5;
+}
+.container .mode div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.container .mode div button {
+  width: 145px;
+  height: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px #7A6456;
+  text-transform: uppercase;
+  font-size: 13.3333333333px;
+  font-weight: 700;
+  color: #563E37;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.container .mode div button:hover, .container .mode div button:active {
+  color: #30251D;
+}
+.container .mode div #automatic {
+  background-color: #FEAF3C;
+}
+.container .mode div #automatic:hover, .container .mode div #automatic:active {
+  background-color: #F8833E;
+}
+.container .mode div #handle {
+  background-color: #7BC5C5;
+}
+.container .mode div #handle:hover, .container .mode div #handle:active {
+  background-color: #2DA3A5;
+}
+.container .auto {
+  align-items: center;
+  gap: 10px;
+  padding-block: 25px;
+  padding-inline: 15px;
+}
+.container .auto label, .container .auto output {
+  font-size: 16px;
+  color: #563E37;
+  line-height: 1.5;
+}
+.container .auto div input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 70vw;
+  height: 8px;
+  cursor: pointer;
+  background-color: #7BC5C5;
+  border-radius: 6px;
+  outline: none;
+}
+.container .auto div input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  background: #FCA03A;
+  border-radius: 50%;
+  outline: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.container .auto div input::-webkit-slider-thumb:hover,
+.container .auto div input::-webkit-slider-thumb:active {
+  box-shadow: 0 0 0 2px #F8833E;
+}
+.container .auto #petsName {
+  display: block;
+  height: 100px;
+  width: calc(100% - 30px);
+  margin-inline: auto;
+  margin-block: 20px;
+  padding: 10px;
+  border-radius: 6px;
+  resize: none;
+  cursor: text;
+}
+.container .auto #petsName:focus {
+  outline: 1px solid #F8833E;
+}
+.container .auto button {
+  width: 250px;
+  height: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px #7A6456;
+  background-color: #FEAF3C;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  color: #563E37;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.container .auto button:hover, .container .auto button:active {
+  background-color: #F8833E;
+  color: #30251D;
+}
+.container .table-holder {
+  align-items: center;
+  gap: 10px;
+  padding-block: 25px;
+  padding-inline: 15px;
+}
+.container .table-holder button {
+  width: 250px;
+  height: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px #7A6456;
+  background-color: #FEAF3C;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  color: #563E37;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.container .table-holder button:hover, .container .table-holder button:active {
+  background-color: #F8833E;
+  color: #30251D;
+}
+.container #startAgainBtn,
+.container #startAgainHandBtn {
+  display: none;
+}
+.container .table-container,
+.container .table-container-handle {
+  display: grid;
+  justify-items: center;
+  overflow-x: auto;
+}
+.container .table-container > table,
+.container .table-container-handle > table {
+  background-color: #7A6456;
+  padding: 8px;
+  border-radius: 6px;
+  color: white;
+  width: 90vw;
+}
+.container .table-container > table input,
+.container .table-container-handle > table input {
+  width: 50px;
+  padding: 5px;
+  border-radius: 4px;
+}
+.container .table-container > table input:focus,
+.container .table-container-handle > table input:focus {
+  outline: 2px solid #F8833E;
+}
+.container .table-container > table > tr,
+.container .table-container-handle > table > tr {
+  height: 40px;
+  box-shadow: inset 0 10px 30px 5px #563E37;
+  border-radius: 6px;
+}
+.container .table-container > table > tr > td,
+.container .table-container-handle > table > tr > td {
+  padding: 6px;
+}
+.container .table-container > table tr:nth-child(1) td:nth-child(1),
+.container .table-container-handle > table tr:nth-child(1) td:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50px;
+}
+.container .table-container > table tr:nth-child(1) td,
+.container .table-container-handle > table tr:nth-child(1) td {
+  width: 40px;
+}
+.container .table-container > table tr:nth-child(1) td:nth-child(1)::before,
+.container .table-container-handle > table tr:nth-child(1) td:nth-child(1)::before {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-color: white;
+  transform: rotate(6deg) translateY(-50%);
+}
+.container .table-container > table tr:nth-child(1) td:nth-child(1) span:nth-child(1),
+.container .table-container-handle > table tr:nth-child(1) td:nth-child(1) span:nth-child(1) {
+  text-align: right;
+}
+.container .table-container > table tr:nth-child(1) td:nth-child(1) span:nth-child(2),
+.container .table-container-handle > table tr:nth-child(1) td:nth-child(1) span:nth-child(2) {
+  text-align: left;
+}
+.container .table-container > table tr td,
+.container .table-container-handle > table tr td {
+  text-align: center;
+}
+.container .table-container > table tr td:nth-child(1),
+.container .table-container-handle > table tr td:nth-child(1) {
+  text-align: start;
+}/*# sourceMappingURL=style.css.map */

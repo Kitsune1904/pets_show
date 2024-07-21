@@ -28,7 +28,7 @@ const juryCount = document.getElementById("juryCount");
 const petsCount = document.getElementById("petsCount");
 const petsName = document.getElementById("petsName");
 
-let choosenId;
+let chosenId;
 let petsNum;
 let juryNum;
 
@@ -36,7 +36,7 @@ Array.from(chooseBtns).forEach((element) => {
   element.addEventListener("click", () => {
     mainBlock.style.display = "none";
     modeBlock.style.display = "flex";
-    choosenId = element.id;
+    chosenId = element.id;
   });
 });
 
@@ -96,7 +96,7 @@ const isNormalData = (checkedEl, petsNum) => {
 
 const createAutoTable = (petsCount, juryCount, petsNames) => {
   const title = `Добро пожаловать на выставку ${
-    choosenId === "catBtn" ? "кошек!" : "собак!"
+    chosenId === "catBtn" ? "кошек!" : "собак!"
   }`;
   tableTitle.innerText = title;
   const table = document.createElement("table");
