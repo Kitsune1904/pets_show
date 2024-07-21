@@ -399,4 +399,65 @@ ul, ol {
 .container .table-container > table tr td:nth-child(1),
 .container .table-container-handle > table tr td:nth-child(1) {
   text-align: start;
+}
+
+@media (min-width: 576px) {
+  body {
+    padding-inline: 40px;
+    padding-block: 20px;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  .container .main {
+    padding-inline: 40px;
+  }
+  .container .main .card-holder {
+    gap: 50px;
+  }
+  .container .main .card-holder .card {
+    gap: 20px;
+  }
+  .container .main .card-holder .card img,
+  .container .main .card-holder .card button {
+    width: 175px;
+  }
+  .container .mode {
+    padding-inline: 40px;
+    gap: 15px;
+  }
+  .container .mode p:first-of-type {
+    align-self: flex-start;
+  }
+  .container .mode div {
+    gap: 40px;
+  }
+  .container .mode div button {
+    width: 175px;
+  }
+  .container .auto {
+    padding-inline: 40px;
+    gap: 15px;
+  }
+  .container .table-holder {
+    padding-inline: 40px;
+    gap: 15px;
+  }
+  .container .table-holder h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #30251D;
+  }
+  .container .table-holder-hand {
+    padding-inline: 40px;
+    gap: 15px;
+  }
+  .container .table-container > table,
+  .container .table-container-handle > table {
+    width: 70vw;
+  }
+  .container .table-container > table input,
+  .container .table-container-handle > table input {
+    width: 75px;
+  }
 }/*# sourceMappingURL=style.css.map */

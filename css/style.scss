@@ -160,7 +160,7 @@ ul, ol {
     .arrow-back {
         display: inline-block;
         width: 24px;
-        align-self: flex-end;
+        align-self: flex-start;
         transition: all .5s;
         cursor: pointer;
 
@@ -511,5 +511,83 @@ ul, ol {
     .table-container > table tr td:nth-child(1),
     .table-container-handle > table tr td:nth-child(1) {
         text-align: start;
+    }
+}
+
+@media (min-width: 576px) {
+    body {
+        padding-inline: 40px;
+        padding-block: 20px;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    .container {
+
+        .main {
+            padding-inline: 40px;
+
+            .card-holder {
+                gap: 50px;
+
+                .card {
+                    gap: 20px;
+
+                    img,
+                    button {
+                        width: 175px;
+                    }
+                }
+            }
+        }
+
+        .mode {
+            padding-inline: 40px;
+            gap: 15px;
+
+            p:first-of-type {
+                align-self: flex-start;
+            }
+
+            div {
+                gap: 40px;
+
+                button {
+                    width: 175px;
+                }
+            }
+        }
+
+        .auto {
+            padding-inline: 40px;
+            gap: 15px;
+        }
+
+        .table-holder {
+            padding-inline: 40px;
+            gap: 15px;
+
+            h2 {
+                font-size: $font-size-lg;
+                font-weight: $font-weight-bold;
+                color: $color-brown-300;
+            }
+        }
+
+        .table-holder-hand {
+            padding-inline: 40px;
+            gap: 15px;
+        }
+
+        .table-container > table,
+        .table-container-handle > table {
+            width: 70vw;
+
+            input {
+                width: 75px;
+            }
+        }
     }
 }
