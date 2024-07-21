@@ -161,8 +161,8 @@ const getAndColorWinner = (juryCount, table, rowsNum, isHandle) => {
       }
       if (col != juryCount + 1) {
         const value = Number(table.rows[row].cells[col].children[0].value);
-        if (value === 0) {
-          alert("Заполните все поля");
+        if (value === 0 || value < 1 || value > 100) {
+          alert("Заполните все поля корректно (от 1 до 100)");
           throw new Error("not all values");
         } else {
           sum += value;
