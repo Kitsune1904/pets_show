@@ -62,10 +62,6 @@ ul, ol {
 }
 
 .container {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -588,6 +584,72 @@ ul, ol {
             input {
                 width: 75px;
             }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 750px;
+    
+        p {
+            font-size: calc($font-size-sm * 1.2);
+        }
+
+        h2 {
+            font-size: $font-size-xl;
+        }
+    
+        .auto {
+    
+            label, output {
+                font-size: calc($font-size-sm * 1.2);
+            }
+    
+            div {
+                input {
+                    width: 400px;
+                }
+            }
+        }
+
+        .table-holder-hand {
+            
+            .btns-holder {
+                gap: 15px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                }
+    
+                button {
+                    width: 250px;
+                }
+    
+                div:last-of-type {
+                    width: 300px;
+                }
+            }
+        }
+        
+        .table-container > table,
+        .table-container-handle > table {
+            width: 600px;
+    
+            input {
+                width: 100px;
+            }
+        }
+        
+        .table-container > table tr:nth-child(1) td:nth-child(1),
+        .table-container-handle > table tr:nth-child(1) td:nth-child(1) {
+            width: 90px;
+        }
+        
+        .table-container > table tr:nth-child(1) td,
+        .table-container-handle > table tr:nth-child(1) td {
+            width: 100px;
         }
     }
 }

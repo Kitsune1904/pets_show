@@ -460,4 +460,50 @@ ul, ol {
   .container .table-container-handle > table input {
     width: 75px;
   }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+  .container p {
+    font-size: 19.2px;
+  }
+  .container h2 {
+    font-size: 46px;
+  }
+  .container .auto label, .container .auto output {
+    font-size: 19.2px;
+  }
+  .container .auto div input {
+    width: 400px;
+  }
+  .container .table-holder-hand .btns-holder {
+    gap: 15px;
+  }
+  .container .table-holder-hand .btns-holder div {
+    display: flex;
+    flex-direction: column;
+  }
+  .container .table-holder-hand .btns-holder button {
+    width: 250px;
+  }
+  .container .table-holder-hand .btns-holder div:last-of-type {
+    width: 300px;
+  }
+  .container .table-container > table,
+  .container .table-container-handle > table {
+    width: 600px;
+  }
+  .container .table-container > table input,
+  .container .table-container-handle > table input {
+    width: 100px;
+  }
+  .container .table-container > table tr:nth-child(1) td:nth-child(1),
+  .container .table-container-handle > table tr:nth-child(1) td:nth-child(1) {
+    width: 90px;
+  }
+  .container .table-container > table tr:nth-child(1) td,
+  .container .table-container-handle > table tr:nth-child(1) td {
+    width: 100px;
+  }
 }/*# sourceMappingURL=style.css.map */
