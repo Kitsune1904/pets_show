@@ -463,13 +463,18 @@ ul, ol {
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 750px;
+    max-width: -moz-min-content;
+    max-width: min-content;
   }
   .container p {
     font-size: 19.2px;
   }
   .container h2 {
     font-size: 46px;
+  }
+  .container .main,
+  .container .mode {
+    min-width: 600px;
   }
   .container .auto label, .container .auto output {
     font-size: 19.2px;

@@ -590,7 +590,7 @@ ul, ol {
 
 @media (min-width: 768px) {
     .container {
-        max-width: 750px;
+        max-width: min-content;
     
         p {
             font-size: calc($font-size-sm * 1.2);
@@ -598,6 +598,11 @@ ul, ol {
 
         h2 {
             font-size: $font-size-xl;
+        }
+
+        .main,
+        .mode {
+            min-width: 600px;
         }
     
         .auto {
