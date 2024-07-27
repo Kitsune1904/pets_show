@@ -112,6 +112,8 @@ const createAutoTable = (petsCount, juryCount, petsNames) => {
       } else if (col != 0 && row != 0 && col != juryCount + 1) {
         const input = document.createElement("input");
         input.type = "number";
+        input.min = 1;
+        input.max = 100;
         cell.appendChild(input);
       } else if (col == juryCount + 1 && row == 0) {
         cell.appendChild(document.createTextNode("Сумма"));
@@ -224,6 +226,8 @@ const createAndFillRow = (colNum) => {
         input.type = "text";
       } else {
         input.type = "number";
+        input.min = 1;
+        input.max = 100;
       }
       col.appendChild(input);
       row.appendChild(col);
@@ -247,6 +251,8 @@ const addAndRemoveCell = (table, isAdd) => {
         newCell.innerText = `Судья ${table.colCount - 1}`;
       } else {
         input.type = "number";
+        input.min = 1;
+        input.max = 100;
         newCell.appendChild(input);
       }
     } else {
